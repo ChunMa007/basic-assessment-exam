@@ -3,7 +3,6 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "leaflet/dist/leaflet.css";
-import Signup from './Signup'
 import Login from './Login'
 import Home from './Home'
 import ProtectedRoute from './ProtectedRoute';
@@ -15,6 +14,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/home' 
                 element={
