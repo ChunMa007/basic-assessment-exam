@@ -105,8 +105,6 @@ function Home() {
         navigate("/login")
     }
 
-    const history = JSON.parse(localStorage.getItem("history")) || []
-
     return (
         <div className="container mt-4">
             <button type="submit" className="btn btn-secondary float-end" onClick={() => logout()}>Logout</button>
@@ -180,7 +178,7 @@ function Home() {
                 <div className="offcanvas-body">
                     
                     <div style={{height: '500px', overflowY: "auto"}}>
-                        {history.map((ip) => (
+                        {searchHistory.map((ip) => (
                             <div key={ip} className="border rounded p-2 mb-2 d-flex align-items-center justify-content-between">
                                 <h4 className="m-0"
                                     onClick={() => clickedHistory(ip)} 

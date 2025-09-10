@@ -51,7 +51,7 @@ function Login() {
                             className="form-control" 
                             id="email" 
                             placeholder="Email" 
-                            name="email"
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             />
                     </div>
@@ -62,7 +62,7 @@ function Login() {
                             className="form-control" 
                             id="password" 
                             placeholder="Password" 
-                            name="password"
+                            value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             />
                     </div>
@@ -71,8 +71,6 @@ function Login() {
                         <button type="submit" className="btn btn-primary btn-block">Login</button>
                     </div>
                 </form>
-
-                <p className="text-center mt-3">Don't have an account yet? <Link to="/register">Signup</Link></p>
             </div> 
         </div>
     )
