@@ -1,29 +1,32 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const users = require("./users");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 8000
+const users = [
+    { email: "admin@gmail.com", password: "admin123" },
+];
 
 app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
-    const user = users.find(user => user.email === email && user.password === password);
+    const user = users.find(u => u.email === email && u.password === password);
 
-    if(!user) {
-        return res.status(401).json({
-            message: "Invalid Credentials"
-        });
+    if (!user) {
+        return res.status(401).json({ message: "Invalid Credentials" });
     }
 
     res.json({
         message: "Login Successful",
-        user: {user: user.email},
+        user: { email: user.email }
     });
 });
 
+app.get("/", (req, res) => {
+    res.send("Backend API is running");
+});
 
-app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
