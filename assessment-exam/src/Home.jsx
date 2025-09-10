@@ -181,7 +181,7 @@ function Home() {
                     
                     <div style={{height: '500px', overflowY: "auto"}}>
                         {history.map((ip) => (
-                            <div className="border rounded p-2 mb-2 d-flex align-items-center justify-content-between">
+                            <div key={ip} className="border rounded p-2 mb-2 d-flex align-items-center justify-content-between">
                                 <h4 className="m-0"
                                     onClick={() => clickedHistory(ip)} 
                                     style={{cursor: "pointer"}}
