@@ -9,10 +9,14 @@ app.use(express.json());
 const users = [{ email: "admin@gmail.com", password: "admin123" }];
 
 app.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
-  const user = users.find(u => u.email === email && u.password === password);
-  if (!user) return res.status(401).json({ message: "Invalid Credentials" });
-  res.json({ message: "Login Successful", user: { email: user.email } });
+    const { email, password } = req.body;
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if(!user){
+        return res.status(401).json({ message: "Invalid Credentials" });
+    }
+    
+    res.json({ message: "Login Successful", user: { email: user.email } });
 });
 
 app.get("/", (req, res) => {
